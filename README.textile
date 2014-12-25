@@ -16,11 +16,12 @@ The list of users is visible to anyone. Use authentication to restrict it to the
 
 h3. Configuration File
 Steps are for the purpose of testing:
-1. Run white_album project (authorizaion server)
-2. modify omniauth-bonnier gem path in Gemfile to point to the gem path on filesystem
-3. modify :site option in omniauth-bonnier/gem/path/lib/omniauth/strategies/bonnier_oauth2.rb to point to white_album server url.
-4. Create a new application from white_album applications page by navigating to http://white_album_url/api/oauth/applications
-5. copycopy application key and secret to this applications config/secrets.yml file
+
+# Run white_album project (authorizaion server)
+# modify omniauth-bonnier gem path in Gemfile to point to the gem path on filesystem
+# modify :site option in omniauth-bonnier/gem/path/lib/omniauth/strategies/bonnier_oauth2.rb to point to white_album server url.
+# Create a new application from white_album applications page by navigating to http://white_album_url/api/oauth/applications
+# copycopy application key and secret to this applications config/secrets.yml file
 
 Add your credentials to the file *config/secrets.yml*:
 
