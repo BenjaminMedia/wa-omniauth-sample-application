@@ -13,11 +13,13 @@ gem 'bootstrap-sass'
 gem 'high_voltage'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'omniauth-bonnier-oauth2', :path => '/Users/moustafasamir/Documents/workspace/omniauth-bonnier-oauth2'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
   gem 'quiet_assets'
   gem 'rails_layout'
+  gem 'pry'
 end
 group :development, :test do
   gem 'factory_girl_rails'
@@ -26,7 +28,7 @@ group :development, :test do
   gem 'sqlite3'
 end
 group :production do
-  gem 'pg'
+  # gem 'pg'
   gem 'rails_12factor'
 end
 group :test do
