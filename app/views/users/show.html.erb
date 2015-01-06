@@ -1,2 +1,5 @@
 <h3>User</h3>
 <p>Name: <%= @user.name if @user.name %></p>
+
+<a id="js-update-info-btn" data-user-id=<%= @user.id %> href="javascript:;">Fetch user's data</a>
+<p id="js-user-updated-info"></p>

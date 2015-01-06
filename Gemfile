@@ -14,6 +14,7 @@ gem 'high_voltage'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-bonnier-oauth2', :path => '/Users/moustafasamir/Documents/workspace/omniauth-bonnier-oauth2'
+gem 'bonnier', :path =>'/Users/moustafasamir/Documents/workspace/bonnier-ruby-gem'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
@@ -26,6 +27,7 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails'
   gem 'sqlite3'
+  gem 'annotate'
 end
 group :production do
   # gem 'pg'
