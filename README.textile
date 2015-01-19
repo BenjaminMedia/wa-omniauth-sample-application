@@ -1,9 +1,9 @@
 
-Rails 4.1 example application that integrates Rails and OmniAuth. "OmniAuth":https://github.com/intridea/omniauth/wiki is a gem that provides authentication using third-party credentials such as Facebook, Twitter, or GitHub accounts.
+Rails 4.1 example application that demonstrate the usage of bonnier-omniauth and bonnier-api gems
 
 h2. What Is Implemented -- and What Is Not
 
-The example application can be used as the basis for a website that provides a login using a Twitter account. You can easily substitute any other "provider supported by OmniAuth":https://github.com/intridea/omniauth/wiki/List-of-Strategies. With knowledge of Rails, the website can be adapted and customized to your needs. Features include:
+The example application can be used as the basis for a website that provides a login using White Album account. Features include:
 
 * Home page
 * Navigation bar
