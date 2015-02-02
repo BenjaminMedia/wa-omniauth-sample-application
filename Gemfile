@@ -15,6 +15,9 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-bonnier-oauth2', :path => '/Users/moustafasamir/Documents/workspace/omniauth-bonnier-oauth2'
 gem 'bonnier', :path =>'/Users/moustafasamir/Documents/workspace/bonnier-ruby-gem'
+gem 'haml'
+gem 'backbone-on-rails'
+gem 'rest-client', '~> 1.7.2'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]

@@ -1,0 +1,14 @@
+#js-client-auth-container
+  %button#js-refresh-token-btn.btn.btn-default{type: :button} Refresh Token
+  %div
+    new token:
+    #js-client-token
+  %div
+    %button#js-fetch-header-btn.btn.btn-default{type: :button} Fetch External header using this token
+    Header content:
+    #js-header-content
+
+:coffeescript
+  window.RailsOmniauth.initialize = ()->
+    new RailsOmniauth.Views.ClientIndex()
+
