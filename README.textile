@@ -11,6 +11,7 @@ The example application can be used as the basis for a website that provides a l
 * Logout
 * Show user profile
 * List of users
+* Client Credentials flow
 
 The list of users is visible to anyone. Use authentication to restrict it to the user who was created first, or implement authorization to restrict it to an administrator. See the "rails-devise-pundit":https://github.com/RailsApps/rails-devise-pundit example application if you wish to add authorization.
 
@@ -21,7 +22,7 @@ Steps are for the purpose of testing:
 # modify omniauth-bonnier gem path in Gemfile to point to the gem path on filesystem
 # modify :site option in omniauth-bonnier/gem/path/lib/omniauth/strategies/bonnier_oauth2.rb to point to white_album server url.
 # Create a new application from white_album applications page by navigating to http://white_album_url/api/oauth/applications
-# copycopy application key and secret to this applications config/secrets.yml file
+# copy application key and secret to this applications config/secrets.yml file
 
 Add your credentials to the file *config/secrets.yml*:
 
@@ -30,6 +31,7 @@ development:
   omniauth_provider_key: <%= ENV["OMNIAUTH_PROVIDER_KEY"] %>
   omniauth_provider_secret: <%= ENV["OMNIAUTH_PROVIDER_SECRET"] %>
   secret_key_base: very_long_random_string
+  wa_site_url: http://localhost:3000/
 
 test:
   secret_key_base: very_long_random_string
@@ -42,3 +44,32 @@ production:
   secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
 </pre>
 
+h3. Client Credentials flow authentication
+The Client Credentials flow is probably the most simple flow of OAuth 2 flows. The main difference from the others is that this flow is not associated with a resource owner; it's associated with the client itself instead.
+
+One usage of this flow would be retrieving client statistics for example. Since the access token would be connected to the client only, the access token won't have access to private user data for example.
+
+First the client needs to generate an access token using its key/secret
+
+<pre>
+require 'rest-client'
+require 'json'
+
+client_id = '4ea1b...'
+client_secret = 'a2982...'
+
+response = RestClient.post '#{Rails.application.secrets.wa_site_url}api/oauth/token', {
+  grant_type: 'client_credentials',
+  client_id: client_id,
+  client_secret: client_secret
+}
+token = JSON.parse(response)["access_token"]
+# => 'a2982...'
+</pre>
+
+Then the endpoints protected with client credentials can be called like this
+
+<pre>
+RestClient.get 'http://localhost:3000/api/v1/profiles.json', { 'Authorization' => "Bearer #{token}" }
+# => "[{"email":"tara_kertzmann@yundt.name","id":25,"name":"Jorge Ward","username":"leonor"}, ...]"
+</pre>
